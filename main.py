@@ -83,7 +83,11 @@ class UpdateSource:
                 continue
             if config.open_method[setting]:
                 if setting == "subscribe":
-                    subscribe_urls = get_urls_from_file(constants.subscribe_path)
+                    subscribe_urls_env = os.getenv("SUBSCRIBE_URLS")
+                    if subscribe_urls_env:
+                        subscribe_urls = [url.strip() for url in subscribe_urls_env.split(",") if url.strip()]
+                    else:
+                        subscribe_urls = get_urls_from_file(constants.subscribe_path)
                     whitelist_urls = get_urls_from_file(constants.whitelist_path)
                     if not os.getenv("GITHUB_ACTIONS") and config.cdn_url:
                         subscribe_urls = [join_url(config.cdn_url, url) if "raw.githubusercontent.com" in url else url
