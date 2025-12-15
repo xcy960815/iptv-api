@@ -506,3 +506,26 @@ Name: 高尔夫网球, URL: http://121.29.141.59:4022/rtp/239.253.93.122:6465, F
 Name: 高尔夫网球, URL: rtsp://115.153.222.112:554/PLTV/88888888/224/3221226967/86128985.smil, From: subscribe, IPv_Type: ipv4, Location: 中国-江西-宜春, ISP: 电信, Date: None, Delay: 10003 ms, Speed: 0.00 M/s, Resolution: None
 Name: 女性时尚, URL: http://58.17.48.228:808/hls/95/index.m3u8, From: subscribe, IPv_Type: ipv4, Location: 中国-江西-南昌, ISP: 联通, Date: None, Delay: -1 ms, Speed: 0.00 M/s, Resolution: None
 Name: 高尔夫网球, URL: http://58.48.104.98:4022/rtp/239.69.1.83:10138, From: subscribe, IPv_Type: ipv4, Location: 中国-湖北-武汉, ISP: 电信, Date: None, Delay: -1 ms, Speed: 0.00 M/s, Resolution: 1920x1080
+Name: 女性时尚, URL: http://113.195.5.165:9901/tsfile/live/1054_1.m3u8, From: subscribe, IPv_Type: ipv4, Location: 中国-江西-九江, ISP: 联通, Date: None, Delay: -1 ms, Speed: 0.00 M/s, Resolution: None
+Name: 高尔夫网球, URL: http://www.lizhinas.top:1009/rtp/239.252.219.95:5140, From: subscribe, IPv_Type: ipv4, Location: 中国-江西-上饶, ISP: 电信, Date: None, Delay: -1 ms, Speed: 0.00 M/s, Resolution: 1920x1080
+Name: 电视指南, URL: http://180.213.174.225:9901/tsfile/live/1056_1.m3u8?key=txiptv&playlive=1&authid=0, From: subscribe, IPv_Type: ipv4, Location: 中国-天津-天津, ISP: 电信, Date: None, Delay: -1 ms, Speed: 0.00 M/s, Resolution: 1920x1080
+Name: 高尔夫网球, URL: http://58.17.48.228:808/hls/97/index.m3u8, From: subscribe, IPv_Type: ipv4, Location: 中国-江西-南昌, ISP: 联通, Date: None, Delay: -1 ms, Speed: 0.00 M/s, Resolution: None
+Name: 高尔夫网球, URL: http://106.59.3.88:55555/rtp/239.200.200.89:8024, From: subscribe, IPv_Type: ipv4, Location: 中国-云南, ISP: 电信, Date: None, Delay: -1 ms, Speed: 0.00 M/s, Resolution: None
+Name: 高尔夫网球, URL: http://112.234.21.109:9901/tsfile/live/1036_1.m3u8, From: subscribe, IPv_Type: ipv4, Location: 中国-山东-临沂, ISP: 联通, Date: None, Delay: -1 ms, Speed: 0.00 M/s, Resolution: None
+Name: 高尔夫网球, URL: http://112.234.23.204:9901/tsfile/live/1036_1.m3u8?key=txiptv&playlive=1&authid=0, From: subscribe, IPv_Type: ipv4, Location: 中国-山东-临沂, ISP: 联通, Date: None, Delay: 10926 ms, Speed: 0.07 M/s, Resolution: 720x576
+Name: 高尔夫网球, URL: http://114.100.195.138:4022/rtp/238.1.79.58:4600, From: subscribe, IPv_Type: ipv4, Location: 中国-安徽-马鞍山, ISP: 电信, Date: None, Delay: -1 ms, Speed: 0.00 M/s, Resolution: None
+Name: 电视指南, URL: rtsp://115.153.245.70/PLTV/88888888/224/3221226969/86129034.smil, From: subscribe, IPv_Type: ipv4, Location: 中国-江西-宜春, ISP: 电信, Date: None, Delay: 10011 ms, Speed: 0.00 M/s, Resolution: None
+Name: 高尔夫网球, URL: http://27.184.64.66:58888/rtp/239.254.201.223:7252, From: subscribe, IPv_Type: ipv4, Location: 中国-河北-石家庄, ISP: 电信, Date: None, Delay: -1 ms, Speed: 0.00 M/s, Resolution: None
+Name: 高尔夫网球, URL: http://111.162.205.105:8686/rtp/225.1.2.169:5002, From: subscribe, IPv_Type: ipv4, Location: 中国-天津-天津, ISP: 联通, Date: None, Delay: -1 ms, Speed: 0.00 M/s, Resolution: None
+Name: 高尔夫网球, URL: http://171.113.210.106:4022/rtp/239.69.1.83:10138, From: subscribe, IPv_Type: ipv4, Location: 中国-湖北-武汉, ISP: 电信, Date: None, Delay: -1 ms, Speed: 0.00 M/s, Resolution: 1920x1080
+Name: 高尔夫网球, URL: http://60.172.83.179:8686/rtp/238.1.79.58:4600, From: subscribe, IPv_Type: ipv4, Location: 中国-安徽-黄山, ISP: 电信, Date: None, Delay: -1 ms, Speed: 0.00 M/s, Resolution: None
+Name: 电视指南, URL: rtsp://115.153.247.80/PLTV/88888888/224/3221226969/86129034.smil, From: subscribe, IPv_Type: ipv4, Location: 中国-江西-宜春, ISP: 电信, Date: None, Delay: 10010 ms, Speed: 0.00 M/s, Resolution: None
+Name: 电视指南, URL: http://121.29.141.59:4022/rtp/239.253.93.249:6427, From: subscribe, IPv_Type: ipv4, Location: 中国-河北-石家庄, ISP: 联通, Date: None, Delay: -1 ms, Speed: 0.00 M/s, Resolution: None
+Name: 电视指南, URL: https://cc06.tv12.xyz/39.m3u8, From: subscribe, IPv_Type: ipv6, Location: 美国, ISP: CloudFlare Inc., Date: None, Delay: -1 ms, Speed: 0.00 M/s, Resolution: None
+Name: 电视指南, URL: rtsp://115.153.222.112:554/PLTV/88888888/224/3221226969/86129034.smil, From: subscribe, IPv_Type: ipv4, Location: 中国-江西-宜春, ISP: 电信, Date: None, Delay: 10008 ms, Speed: 0.00 M/s, Resolution: None
+Name: 世界地理, URL: http://180.213.174.225:9901/tsfile/live/1051_1.m3u8?key=txiptv&playlive=1&authid=0, From: subscribe, IPv_Type: ipv4, Location: 中国-天津-天津, ISP: 电信, Date: None, Delay: -1 ms, Speed: 0.00 M/s, Resolution: None
+Name: 电视指南, URL: http://ygbh.site/php/bfgd.php?id=164, From: subscribe, IPv_Type: ipv4, Location: IANA, ISP: 保留地址(Benchmarking), Date: None, Delay: -1 ms, Speed: 0.00 M/s, Resolution: None
+Name: 电视指南, URL: http://58.222.30.156/sx.v.smtcdns.net/hlslive-tx-cdn.ysp.cctv.cn/ysp/2024172503.m3u8, From: subscribe, IPv_Type: ipv4, Location: 中国-江苏-泰州, ISP: 电信, Date: None, Delay: -1 ms, Speed: 0.00 M/s, Resolution: None
+Name: 电视指南, URL: http://zhancheng.x3322.net:6699/live/1084/index.m3u8, From: subscribe, IPv_Type: ipv4, Location: None, ISP: None, Date: None, Delay: -1 ms, Speed: 0.00 M/s, Resolution: None
+Name: 世界地理, URL: rtsp://115.153.245.70/PLTV/88888888/224/3221226965/86128966.smil, From: subscribe, IPv_Type: ipv4, Location: 中国-江西-宜春, ISP: 电信, Date: None, Delay: 10007 ms, Speed: 0.00 M/s, Resolution: None
+Name: 世界地理, URL: rtsp://115.153.247.80/PLTV/88888888/224/3221226965/86128966.smil, From: subscribe, IPv_Type: ipv4, Location: 中国-江西-宜春, ISP: 电信, Date: None, Delay: 10003 ms, Speed: 0.00 M/s, Resolution: None
