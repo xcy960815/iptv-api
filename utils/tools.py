@@ -364,9 +364,15 @@ def convert_to_m3u(path=None, first_channel_name=None, data=None):
                             r"(CCTV|CETV)-(\d+)(\+.*)?",
                             lambda m: f"{m.group(1)}{m.group(2)}"
                                       + ("+" if m.group(3) else ""),
-                            first_channel_name if current_group == t("content.update_time") else original_channel_name,
+                            first_channel_name
+                            if current_group == t("content.update_time")
+                            else original_channel_name,
                         )
-                        m3u_output += f'#EXTINF:-1 tvg-name="{processed_channel_name}" tvg-logo="{join_url(logo_url, f'{processed_channel_name}.{config.logo_type}')}"'
+                        logo_filename = f"{processed_channel_name}.{config.logo_type}"
+                        m3u_output += (
+                            f'#EXTINF:-1 tvg-name="{processed_channel_name}" '
+                            f'tvg-logo="{join_url(logo_url, logo_filename)}"'
+                        )
                         if current_group:
                             m3u_output += f' group-title="{current_group}"'
                         item_data = {}

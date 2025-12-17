@@ -1,5 +1,10 @@
 # 这是订阅源列表，每行一个订阅地址
 
+# 只有几个中央台和历年春晚
 https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/iptv.m3u
+# 很多频道 质量不是很高
 https://raw.githubusercontent.com/mzky/checklist/refs/heads/master/itvlist.m3u
+# 虎牙一起看
 https://cdn.jsdelivr.net/gh/Kimentanm/aptv@refs/heads/master/m3u/yqk.m3u
+# github上找的 还不错
+https://raw.githubusercontent.com/YanG-1989/m3u/refs/heads/main/Gather.m3u

@@ -85,7 +85,7 @@ async def get_channels_by_fofa(urls=None, multicast=False, callback=None):
         start_time = time()
         if callback:
             callback(
-                f"{t("pbar.getting_name").format(name=mode_name)}",
+                f"{t('pbar.getting_name').format(name=mode_name)}",
                 0,
             )
         open_driver = config.open_driver
@@ -153,7 +153,7 @@ async def get_channels_by_fofa(urls=None, multicast=False, callback=None):
                 pbar.update()
                 if callback:
                     callback(
-                        t("msg.progress_desc").format(name=f"{t("pbar.get")} FOFA {mode_name}",
+                        t("msg.progress_desc").format(name=f"{t('pbar.get')} FOFA {mode_name}",
                                                       remaining_total=fofa_urls_len - pbar.n,
                                                       item_name=mode_name,
                                                       remaining_time=get_pbar_remaining(n=pbar.n, total=pbar.total,
@@ -181,7 +181,7 @@ async def get_channels_by_fofa(urls=None, multicast=False, callback=None):
         pbar.update(0)
         if callback:
             callback(
-                f"{t("pbar.getting_name").format(name=mode_name)}",
+                f"{t('pbar.getting_name').format(name=mode_name)}",
                 100,
             )
         pbar.close()

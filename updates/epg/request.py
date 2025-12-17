@@ -102,7 +102,7 @@ async def get_epg(names=None, callback=None):
             pbar.update()
             if callback:
                 callback(
-                    t("msg.progress_desc").format(name=f"{t("pbar.get")}{t("name.epg")}",
+                    t("msg.progress_desc").format(name=f"{t('pbar.get')}{t('name.epg')}",
                                                   remaining_total=urls_len - pbar.n,
                                                   item_name=t("pbar.source"),
                                                   remaining_time=get_pbar_remaining(n=pbar.n, total=pbar.total,

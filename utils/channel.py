@@ -13,7 +13,6 @@ from logging import INFO
 from bs4 import NavigableString
 
 import utils.constants as constants
-from updates.epg.tools import write_to_xml, compress_to_gz
 from utils.alias import Alias
 from utils.config import config
 from utils.db import get_db_connection, return_db_connection
@@ -676,7 +675,7 @@ def print_channel_number(data: CategoryChannelData, cate: str, name: str):
     print("IPv4:", len([channel for channel in channel_list if channel["ipv_type"] == "ipv4"]), end=", ")
     print("IPv6:", len([channel for channel in channel_list if channel["ipv_type"] == "ipv6"]), end=", ")
     print(
-        f"{t("name.total")}:",
+        f"{t('name.total')}:",
         len(channel_list),
     )
 
@@ -724,7 +723,7 @@ def append_total_data(
                         data, cate, name, name_results, origin=origin_method, whitelist=whitelist, blacklist=blacklist,
                         ipv_type_data=url_hosts_ipv_type
                     )
-                    print(f"{t(f"name.{method}")}:", len(name_results), end=", ")
+                    print(f"{t(f'name.{method}')}:", len(name_results), end=", ")
             print_channel_number(data, cate, name)
 
 
@@ -804,7 +803,10 @@ def sort_channel_result(channel_data, result=None, filter_host=False, ipv6_suppo
             channel_result[cate][name].extend(total_result)
             for item in total_result:
                 logger.info(
-                    f"Name: {name}, URL: {item.get('url')}, From: {item.get('origin')}, IPv_Type: {item.get("ipv_type")}, Location: {item.get('location')}, ISP: {item.get('isp')}, Date: {item["date"]}, Delay: {item.get('delay') or -1} ms, Speed: {item.get('speed') or 0:.2f} M/s, Resolution: {item.get('resolution')}"
+                f"Name: {name}, URL: {item.get('url')}, From: {item.get('origin')}, IPv_Type: {item.get('ipv_type')}, "
+                f"Location: {item.get('location')}, ISP: {item.get('isp')}, Date: {item.get('date')}, "
+                f"Delay: {item.get('delay') or -1} ms, Speed: {item.get('speed') or 0:.2f} M/s, "
+                f"Resolution: {item.get('resolution')}"
                 )
     logger.handlers.clear()
     return channel_result
@@ -834,9 +836,17 @@ def generate_channel_statistic(logger, cate, name, values):
         default="None"
     )
     logger.info(
-        f"Category: {cate}, Name: {name}, Total: {total}, Valid: {valid}, Valid Percent: {valid_rate:.2f}%, Whitelist: {whitelist_count}, IPv4: {ipv4_count}, IPv6: {ipv6_count}, Min Delay: {min_delay} ms, Max Speed: {max_speed:.2f} M/s, Avg Speed: {avg_speed:.2f} M/s, Max Resolution: {max_resolution}")
+        f"Category: {cate}, Name: {name}, Total: {total}, Valid: {valid}, Valid Percent: {valid_rate:.2f}%, "
+        f"Whitelist: {whitelist_count}, IPv4: {ipv4_count}, IPv6: {ipv6_count}, Min Delay: {min_delay} ms, "
+        f"Max Speed: {max_speed:.2f} M/s, Avg Speed: {avg_speed:.2f} M/s, Max Resolution: {max_resolution}"
+    )
     print(
-        f"\n{f"{t("name.category")}: {cate}, {t("name.name")}: {name}, {t("name.total")}: {total}, {t("name.valid")}: {valid}, {t("name.valid_percent")}: {valid_rate:.2f}%, {t("name.whitelist")}: {whitelist_count}, IPv4: {ipv4_count}, IPv6: {ipv6_count}, {t("name.min_delay")}: {min_delay} ms, {t("name.max_speed")}: {max_speed:.2f} M/s, {t("name.average_speed")}: {avg_speed:.2f} M/s, {t("name.max_resolution")}: {max_resolution}"}")
+        f"\n{t('name.category')}: {cate}, {t('name.name')}: {name}, {t('name.total')}: {total}, "
+        f"{t('name.valid')}: {valid}, {t('name.valid_percent')}: {valid_rate:.2f}%, "
+        f"{t('name.whitelist')}: {whitelist_count}, IPv4: {ipv4_count}, IPv6: {ipv6_count}, "
+        f"{t('name.min_delay')}: {min_delay} ms, {t('name.max_speed')}: {max_speed:.2f} M/s, "
+        f"{t('name.average_speed')}: {avg_speed:.2f} M/s, {t('name.max_resolution')}: {max_resolution}"
+    )
 
 
 def process_write_content(
@@ -867,7 +877,8 @@ def process_write_content(
     rtmp_type = ["hls"] if hls_url else []
     open_url_info = config.open_url_info
     for cate, channel_obj in data.items():
-        content += f"{'\n\n' if not first_cate else ''}{cate},#genre#"
+        prefix = "\n\n" if not first_cate else ""
+        content += f"{prefix}{cate},#genre#"
         first_cate = False
         channel_obj_keys = channel_obj.keys()
         for i, name in enumerate(channel_obj_keys):
@@ -887,8 +898,8 @@ def process_write_content(
             if enable_log:
                 generate_channel_statistic(logger, cate, name, info_list)
     if open_empty_category and no_result_name:
-        custom_print(f"\n{t("msg.no_result_channel")}")
-        content += f"\n\n{t("content.no_result_channel_genre")},#genre#"
+        custom_print(f"\n{t('msg.no_result_channel')}")
+        content += f"\n\n{t('content.no_result_channel_genre')},#genre#"
         for i, name in enumerate(no_result_name):
             end_char = ", " if i < len(no_result_name) - 1 else ""
             custom_print(name, end=end_char)
@@ -904,11 +915,11 @@ def process_write_content(
         update_time_item_url = update_time_item["url"]
         if open_url_info and update_time_item["extra_info"]:
             update_time_item_url = add_url_info(update_time_item_url, update_time_item["extra_info"])
-        value = f"{hls_url}/{update_time_item["id"]}.m3u8" if hls_url else update_time_item_url
+        value = f"{hls_url}/{update_time_item['id']}.m3u8" if hls_url else update_time_item_url
         if config.update_time_position == "top":
-            content = f"{t("content.update_time")},#genre#\n{now},{value}\n\n{content}"
+            content = f"{t('content.update_time')},#genre#\n{now},{value}\n\n{content}"
         else:
-            content += f"\n\n{t("content.update_time")},#genre#\n{now},{value}"
+            content += f"\n\n{t('content.update_time')},#genre#\n{now},{value}"
     if hls_url:
         conn = get_db_connection(constants.rtmp_data_path)
         try:
@@ -948,6 +959,7 @@ def write_channel_to_file(data, epg=None, ipv6=False, first_channel_name=None):
         for dir_name in dir_list:
             os.makedirs(dir_name, exist_ok=True)
         if epg:
+            from updates.epg.tools import write_to_xml, compress_to_gz
             write_to_xml(epg, constants.epg_result_path)
             compress_to_gz(constants.epg_result_path, constants.epg_gz_result_path)
         open_empty_category = config.open_empty_category

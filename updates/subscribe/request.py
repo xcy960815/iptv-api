@@ -2,6 +2,7 @@ from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from logging import INFO
 from time import time
+from typing import Union
 
 from tqdm.asyncio import tqdm_asyncio
 
@@ -45,13 +46,13 @@ async def get_channels_by_subscribe_urls(
     mode_name = t("name.multicast") if multicast else t("name.hotel") if hotel else t("name.subscribe")
     if callback:
         callback(
-            f"{t("pbar.getting_name").format(name=mode_name)}",
+            f"{t('pbar.getting_name').format(name=mode_name)}",
             0,
         )
     hotel_name = constants.origin_map["hotel"]
     logger = get_logger(constants.nomatch_log_path, level=INFO, init=True)
 
-    def process_subscribe_channels(subscribe_info: str | dict) -> defaultdict:
+    def process_subscribe_channels(subscribe_info: Union[str, dict]) -> defaultdict:
         region = ""
         url_type = ""
         if (multicast or hotel) and isinstance(subscribe_info, dict):
@@ -96,7 +97,7 @@ async def get_channels_by_subscribe_urls(
                     if name and url:
                         name = format_channel_name(name)
                         if names and name not in names:
-                            logger.info(f"{item["name"]},{item["url"]}")
+                            logger.info(f"{item['name']},{item['url']}")
                             continue
                         url_partition = url.partition("$")
                         url = url_partition[0]
@@ -129,11 +130,14 @@ async def get_channels_by_subscribe_urls(
             pbar.update()
             if callback:
                 callback(
-                    t("msg.progress_desc").format(name=f"{t("pbar.get")}{mode_name}",
+                    t("msg.progress_desc").format(
+                        name=f"{t('pbar.get')}{mode_name}",
                                                   remaining_total=subscribe_urls_len - pbar.n,
                                                   item_name=mode_name,
-                                                  remaining_time=get_pbar_remaining(n=pbar.n, total=pbar.total,
-                                                                                    start_time=start_time)),
+                        remaining_time=get_pbar_remaining(
+                            n=pbar.n, total=pbar.total, start_time=start_time
+                        ),
+                    ),
                     int((pbar.n / subscribe_urls_len) * 100),
                 )
             return channels

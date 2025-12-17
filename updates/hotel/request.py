@@ -168,7 +168,7 @@ async def get_channels_by_hotel(callback=None):
         region_list_len = len(region_list)
         pbar = tqdm_asyncio(total=region_list_len, desc=t("pbar.name_search").format(name=t("name.hotel_foodie")))
         if callback:
-            callback(f"{t("pbar.getting_name").format(name=t("name.hotel_foodie"))}", 0)
+            callback(f"{t('pbar.getting_name').format(name=t('name.hotel_foodie'))}", 0)
         search_region_result = defaultdict(list)
         with ThreadPoolExecutor(max_workers=3) as executor:
             futures = {
@@ -187,7 +187,7 @@ async def get_channels_by_hotel(callback=None):
                         if url:
                             search_region_result[region].append({"url": url, "date": date})
         urls = [
-            {"region": region, "url": f"http://{item["url"]}/ZHGXTV/Public/json/live_interface.txt"}
+            {"region": region, "url": f"http://{item['url']}/ZHGXTV/Public/json/live_interface.txt"}
             for region, result in search_region_result.items()
             for item in result
         ]

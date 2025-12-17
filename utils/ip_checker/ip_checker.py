@@ -1,5 +1,6 @@
 import socket
 from urllib.parse import urlparse
+from typing import Optional, Tuple
 
 import ipdb
 
@@ -24,7 +25,7 @@ class IPChecker:
         self.url_host[url] = host
         return host
 
-    def get_ip(self, url: str) -> str | None:
+    def get_ip(self, url: str) -> Optional[str]:
         """
         Get the IP from a URL
         """
@@ -58,7 +59,7 @@ class IPChecker:
         self.host_ipv_type[host] = ipv_type
         return ipv_type
 
-    def find_map(self, ip: str) -> tuple[str | None, str | None]:
+    def find_map(self, ip: str) -> Tuple[Optional[str], Optional[str]]:
         """
         Find the IP address and return the location and ISP
         :param ip: The IP address to find

@@ -179,7 +179,7 @@ async def get_channels_by_multicast(names, callback=None):
             pbar = tqdm_asyncio(total=region_type_list_len, desc=t("pbar.name_search").format(name=t("name.multicast")))
             if callback:
                 callback(
-                    f"{t("pbar.getting_name").format(name=t("name.multicast"))}",
+                    f"{t('pbar.getting_name').format(name=t('name.multicast'))}",
                     0,
                 )
             start_time = time()

@@ -183,7 +183,7 @@ async def get_channels_by_online_search(names, callback=None):
     names_len = len(names)
     pbar = tqdm_asyncio(total=names_len, desc=t("pbar.name_search").format(name=t("name.online_search")))
     if callback:
-        callback(f"{t("pbar.getting_name").format(name=t("name.online_search"))}", 0)
+        callback(f"{t('pbar.getting_name').format(name=t('name.online_search'))}", 0)
     with ThreadPoolExecutor(max_workers=3) as executor:
         futures = [
             executor.submit(process_channel_by_online_search, name) for name in names

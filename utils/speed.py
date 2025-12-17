@@ -4,6 +4,7 @@ import json
 import re
 import subprocess
 from time import time
+from typing import Optional, Union, Any
 from urllib.parse import quote, urljoin
 
 import m3u8
@@ -37,8 +38,7 @@ default_ipv6_result = {
 
 
 async def get_speed_with_download(url: str, headers: dict = None, session: ClientSession = None,
-                                  timeout: int = speed_test_timeout) -> dict[
-    str, float | None]:
+                                  timeout: int = speed_test_timeout) -> dict[str, Optional[float]]:
     """
     Get the speed of the url with a total timeout
     """
@@ -73,8 +73,7 @@ async def get_speed_with_download(url: str, headers: dict = None, session: Clien
 
 
 async def get_headers(url: str, headers: dict = None, session: ClientSession = None, timeout: int = 5) -> \
-        CIMultiDictProxy[str] | dict[
-            any, any]:
+        Union[CIMultiDictProxy[str], dict[Any, Any]]:
     """
     Get the headers of the url
     """
@@ -120,7 +119,7 @@ async def get_url_content(url: str, headers: dict = None, session: ClientSession
         return content
 
 
-def check_m3u8_valid(headers: CIMultiDictProxy[str] | dict[any, any]) -> bool:
+def check_m3u8_valid(headers: Union[CIMultiDictProxy[str], dict[Any, Any]]) -> bool:
     """
     Check if the m3u8 url is valid
     """
@@ -132,7 +131,7 @@ def check_m3u8_valid(headers: CIMultiDictProxy[str] | dict[any, any]) -> bool:
 
 async def get_result(url: str, headers: dict = None, resolution: str = None,
                      filter_resolution: bool = config.open_filter_resolution,
-                     timeout: int = speed_test_timeout) -> dict[str, float | None]:
+                     timeout: int = speed_test_timeout) -> dict[str, Optional[float]]:
     """
     Get the test result of the url
     """
@@ -257,7 +256,7 @@ async def ffmpeg_url(url, timeout=speed_test_timeout):
         return res
 
 
-async def get_resolution_ffprobe(url: str, headers: dict = None, timeout: int = speed_test_timeout) -> str | None:
+async def get_resolution_ffprobe(url: str, headers: dict = None, timeout: int = speed_test_timeout) -> Optional[str]:
     """
     Get the resolution of the url by ffprobe
     """
@@ -373,7 +372,10 @@ async def get_speed(data, headers=None, ipv6_proxy=None, filter_resolution=open_
             callback()
         if logger:
             logger.info(
-                f"Name: {data.get('name')}, URL: {data.get('url')}, From: {data.get('origin')}, IPv_Type: {data.get("ipv_type")}, Location: {data.get('location')}, ISP: {data.get('isp')}, Date: {data["date"]}, Delay: {result.get('delay') or -1} ms, Speed: {result.get('speed') or 0:.2f} M/s, Resolution: {result.get('resolution')}"
+                f"Name: {data.get('name')}, URL: {data.get('url')}, From: {data.get('origin')}, "
+                f"IPv_Type: {data.get('ipv_type')}, Location: {data.get('location')}, ISP: {data.get('isp')}, "
+                f"Date: {data.get('date')}, Delay: {result.get('delay') or -1} ms, "
+                f"Speed: {result.get('speed') or 0:.2f} M/s, Resolution: {result.get('resolution')}"
             )
         return result
 

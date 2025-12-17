@@ -1,6 +1,6 @@
 import json
 import os
-from typing import Dict
+from typing import Dict, Optional
 
 from utils.config import config, resource_path
 
@@ -44,7 +44,7 @@ def get_language() -> str:
     return _CURRENT_LANG
 
 
-def t(key: str, default: str | None = None) -> str:
+def t(key: str, default: Optional[str] = None) -> str:
     global _TRANSLATIONS
     if not _TRANSLATIONS:
         set_language(config.language)
